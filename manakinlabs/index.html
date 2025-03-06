@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manakin Labs - Soluciones de Software a Medida</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #00C853;
+            --secondary-green: #69F0AE;
+            --dark-bg: #121212;
+            --darker-bg: #1E1E1E;
+            --card-bg: #2D2D2D;
+            --white: #FFFFFF;
+            --light-text: #E0E0E0;
+        }
+
+        /* Estilos generales modo oscuro */
+        body {
+            background-color: var(--dark-bg);
+            color: var(--white);
+        }
+
+        /* Navbar oscuro */
+        .navbar {
+            background-color: var(--darker-bg) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            color: var(--white) !important;
+        }
+
+        .nav-link {
+            color: var(--light-text) !important;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-green) !important;
+        }
+
+        /* Cards en modo oscuro */
+        .service-card {
+            background-color: var(--card-bg);
+            color: var(--white);
+        }
+
+        .service-card .card-title {
+            color: var(--primary-green);
+        }
+
+        .service-card .card-text {
+            color: var(--light-text);
+        }
+
+        /* Secciones */
+        .bg-light {
+            background-color: var(--darker-bg) !important;
+        }
+
+        section {
+            background-color: var(--dark-bg);
+        }
+
+        /* Textos */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--white);
+        }
+
+        p {
+            color: var(--light-text);
+        }
+
+        /* Carousel */
+        .carousel-item h5 {
+            color: var(--white);
+        }
+
+        .carousel-item p {
+            color: var(--light-text);
+        }
+
+        /* Formulario */
+        .form-control {
+            background-color: var(--card-bg);
+            border: 1px solid #404040;
+            color: var(--white);
+        }
+
+        .form-control:focus {
+            background-color: var(--card-bg);
+            border-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        .form-control::placeholder {
+            color: #808080;
+        }
+
+        /* Footer */
+        footer.bg-dark {
+            background-color: var(--primary-green) !important;
+        }
+
+        /* Ajuste del texto del footer para mejor contraste y tamaño */
+        footer .text-white {
+            color: var(--dark-bg) !important;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* Textos específicos */
+        .text-dark {
+            color: var(--white) !important;
+        }
+
+        .text-muted {
+            color: var(--light-text) !important;
+        }
+
+        /* Botón primario */
+        .btn-primary {
+            background-color: var(--primary-green);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-green);
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            padding-top: 120px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .service-card {
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        .water-effect {
+            position: relative;
+            display: block;
+            animation: waterWave 3s ease-in-out infinite;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 1) 0%,
+                rgba(255, 255, 255, 0.8) 50%,
+                rgba(255, 255, 255, 1) 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 15px rgba(255, 255, 255, 0.5);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .display-3.water-effect {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .lead.water-effect {
+            font-size: 1.5rem;
+        }
+
+        @keyframes waterWave {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .hero-section h1,
+        .hero-section p {
+            color: var(--white) !important;
+        }
+
+        .hero-section h1 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
+        }
+
+        .hero-section p {
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            font-weight: 500;
+        }
+
+        .hero-section .lead {
+            color: var(--white) !important;
+            font-size: 1.25rem;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #28df41;
+            border-radius: 50%;
+            padding: 1rem;
+        }
+        
+        .carousel-item {
+            padding: 2rem 0;
+        }
+        
+        .carousel-item img {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .carousel-item img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Corrección específica para los textos del hero */
+        .hero-section .display-3,
+        .hero-section .lead {
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+            background: none !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Asegurar que el efecto water no interfiera con el color */
+        .water-effect {
+            color: var(--white) !important;
+            -webkit-text-fill-color: var(--white) !important;
+        }
+
+        /* Estilos para iconos sociales */
+        .social-icons a {
+            transition: transform 0.3s ease;
+            color: var(--dark-bg) !important;
+            font-size: 1.5rem;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            color: var(--darker-bg) !important;
+            filter: brightness(1.2);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Nuevo estilo para el video de fondo */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Capa de superposición oscura para mejorar la legibilidad */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-primary" href="#">Manakin Labs</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-dark" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+<!-- Hero Section -->
+<section id="inicio" class="hero-section">
+    <video class="hero-video" autoplay loop muted playsinline>
+        <source src="./assets/manakinvideo2.mp4" type="video/mp4">
+        Tu navegador no soporta videos en HTML5.
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="container text-center">
+        <h1 class="display-3 water-effect mb-4">Transformamos Ideas en Soluciones Digitales</h1>
+        <p class="lead mb-4">Expertos en desarrollo de software a medida, automatización y soluciones de IA</p>
+        <a href="#contacto" class="btn btn-primary btn-lg">Contáctanos</a>
+    </div>
+</section>
+
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Nuestros Servicios</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card service-card">
+                        <div class="card-body">
+                            <h3 class="card-title">Software a Medida</h3>
+                            <p class="card-text">Desarrollamos soluciones personalizadas que se adaptan perfectamente a las necesidades específicas de tu negocio.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card">
+                        <div class="card-body">
+                            <h3 class="card-title">Automatización</h3>
+                            <p class="card-text">Optimizamos tus procesos empresariales mediante la automatización inteligente, mejorando la eficiencia y reduciendo costos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card">
+                        <div class="card-body">
+                            <h3 class="card-title">Inteligencia Artificial</h3>
+                            <p class="card-text">Implementamos soluciones de IA para potenciar tu negocio con análisis predictivo y toma de decisiones basada en datos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Clientes -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Clientes que Confían en Nosotros</h2>
+            <div id="clientesCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-md-4 text-center">
+                                <img src="./assets/UC.png" alt="Uniformes Centroamericanos" class="img-fluid mb-3" style="max-height: 100px;">
+                                <h5>Uniformes Centroamericanos</h5>
+                                <p class="text-muted">Soluciones textiles, uniformes y una amplia gama de productos textiles</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-md-4 text-center">
+                                <img src="./assets/coach.png" alt="CoachEsteban.com" class="img-fluid mb-3" style="max-height: 100px;">
+                                <h5>CoachEsteban.com</h5>
+                                <p class="text-muted">Plataforma de coaching y desarrollo personal</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-md-4 text-center">
+                                <img src="./assets/nutriparalavida.png" alt="Nutri Para La Vida" class="img-fluid mb-3" style="max-height: 100px;">
+                                <h5>NutriParaLaVida</h5>
+                                <p class="text-muted">Sistema de gestión nutricional y seguimiento de pacientes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#clientesCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#clientesCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Contáctanos</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Mensaje" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-2">&copy; 2024 Manakin Labs. Todos los derechos reservados.</p>
+            <div class="social-icons">
+                <a href="https://facebook.com/" target="_blank" class="text-white mx-2">
+                    <i class="fab fa-facebook fa-lg"></i>
+                </a>
+                <a href="https://instagram.com/" target="_blank" class="text-white mx-2">
+                    <i class="fab fa-instagram fa-lg"></i>
+                </a>
+                <a href="https://wa.me/TUNUMERO" target="_blank" class="text-white mx-2">
+                    <i class="fab fa-whatsapp fa-lg"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

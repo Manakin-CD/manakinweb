@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrusel Bilingüe Manakin Labs</title>
+<style>
+/* ===== Reset básico ===== */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Arial', sans-serif;
+}
+
+body {
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background: #f0f6f6;
+}
+
+/* ===== Contenedor del carrusel ===== */
+.carousel {
+position: relative;
+width: 350px;
+height: 350px;
+overflow: hidden;
+border-radius: 20px;
+box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.carousel-slide {
+display: flex;
+width: 100%;
+height: 100%;
+position: absolute;
+top: 0;
+left: 100%;
+opacity: 0;
+transition: all 1s ease;
+justify-content: center;
+align-items: center;
+padding: 20px;
+text-align: center;
+color: #fff;
+flex-direction: column;
+}
+
+.carousel-slide.active {
+left: 0;
+opacity: 1;
+}
+
+/* ===== Colores por slide ===== */
+.slide1 { background: linear-gradient(135deg, #0077b6, #00b4d8); }
+.slide2 { background: linear-gradient(135deg, #009688, #26c6da); }
+.slide3 { background: linear-gradient(135deg, #43a047, #66bb6a); }
+
+/* ===== Títulos y subtítulos ===== */
+.carousel-slide h2 {
+font-size: 1.4rem;
+margin-bottom: 0.5rem;
+}
+
+.carousel-slide p {
+font-size: 1rem;
+margin-bottom: 0.5rem;
+}
+
+ul {
+list-style: none;
+margin-top: 0.5rem;
+}
+
+ul li {
+font-size: 0.9rem;
+margin-bottom: 0.3rem;
+}
+
+/* ===== Indicadores ===== */
+.indicators {
+position: absolute;
+bottom: 15px;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+gap: 10px;
+}
+
+.dot {
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background: white;
+opacity: 0.5;
+transition: 0.3s;
+cursor: pointer;
+}
+
+.dot.active {
+opacity: 1;
+transform: scale(1.2);
+}
+</style>
+</head>
+<body>
+
+<div class="carousel">
+<!-- Slide 1 -->
+<div class="carousel-slide slide1 active">
+<h2>¿Usando tu fin de semana para tareas repetitivas?</h2>
+<p>Spending your weekend hours on repetitive tasks?</p>
+<ul>
+<li>Enviar correos / Sending emails</li>
+<li>Limpiar archivos de Excel / Cleaning Excel files</li>
+<li>Hacer reportes manuales / Creating manual reports</li>
+</ul>
+</div>
+
+<!-- Slide 2 -->
+<div class="carousel-slide slide2">
+<h2>Podemos ayudarte a darle más valor a tu tiempo</h2>
+<p>We help you give more value to your time</p>
+<ul>
+<li>Automatización de procesos / Process automation</li>
+<li>Automatización de reportes / Report automation</li>
+<li>Automatización de correos / Email automation</li>
+</ul>
+</div>
+
+<!-- Slide 3 -->
+<div class="carousel-slide slide3">
+<h2>Casos de uso inteligentes</h2>
+<p>Smart use cases</p>
+<ul>
+<li>Recibir pedidos automáticamente / Receive orders automatically</li>
+<li>Registro digital de clientes / Digital customer registration</li>
+<li>Enviar notificaciones / Send automatic notifications</li>
+<li>Publicar en redes sin esfuerzo / Post on social media effortlessly</li>
+</ul>
+</div>
+
+<!-- Indicadores -->
+<div class="indicators">
+<div class="dot active"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+</div>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.carousel-slide');
+const dots = document.querySelectorAll('.dot');
+let currentIndex = 0;
+
+function showSlide(index) {
+slides.forEach((slide, i) => {
+slide.classList.remove('active');
+dots[i].classList.remove('active');
+if(i === index){
+slide.classList.add('active');
+dots[i].classList.add('active');
+}
+});
+}
+
+function nextSlide() {
+currentIndex = (currentIndex + 1) % slides.length;
+showSlide(currentIndex);
+}
+
+// Cambio automático cada 5 segundos
+setInterval(nextSlide, 5000);
+
+// Click en indicadores
+dots.forEach((dot, i) => {
+dot.addEventListener('click', () => {
+currentIndex = i;
+showSlide(i);
+});
+});
+</script>
+
+</body>
+</html>

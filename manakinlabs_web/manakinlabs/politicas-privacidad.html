@@ -6,9 +6,8 @@
     <title>Políticas de Privacidad - Manakin Labs</title>
     
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com; object-src 'none'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https: blob:; connect-src 'self' https://cdn.jsdelivr.net https://webhook.n8.manakinlabs.com https://wa.me; frame-src 'self' https://webhook.n8.manakinlabs.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://wa.me; upgrade-insecure-requests;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; object-src 'none'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https: blob:; connect-src 'self' https://cdn.jsdelivr.net https://webhook.n8.manakinlabs.com https://wa.me; frame-src 'self' https://webhook.n8.manakinlabs.com; base-uri 'self'; form-action 'self' https://wa.me; upgrade-insecure-requests;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
     
     <!-- Favicon optimizado -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -33,6 +32,34 @@
     <link rel="stylesheet" href="styles.css">
     
     <style>
+        /* Estilos básicos de respaldo */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        /* Fallback si las variables CSS no cargan */
+        :root {
+            --dark-bg: #0A0E27;
+            --card-bg: rgba(20, 25, 50, 0.8);
+            --primary-green: #00C853;
+            --secondary-green: #00B8D4;
+            --white: #FFFFFF;
+            --light-text: #E0E0E0;
+            --muted-text: #9E9E9E;
+            --transition-normal: all 0.3s ease;
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.3);
+            --font-secondary: 'Poppins', sans-serif;
+        }
+        
+        /* Asegurar que el contenedor sea visible */
+        .content-wrapper {
+            display: block !important;
+            visibility: visible !important;
+        }
+        
+        /* Estilos para privacy-section */
         .privacy-section {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -194,17 +221,17 @@
                     <!-- Sección 1 -->
                     <div class="privacy-section" data-aos="fade-up" data-aos-delay="100">
                         <h2><i class="fas fa-building me-2"></i>1. Quiénes Somos</h2>
-                        <p><strong>Manakin Labs</strong> es una empresa de desarrollo de software especializada en soluciones tecnológicas a medida, automatización e inteligencia artificial, incluyendo aplicaciones de automatización para redes sociales como Instagram y Facebook.</p>
+                        <p><strong>Manakin Labs</strong> es una agencia de desarrollo de software especializada en soluciones tecnológicas a medida, automatización e inteligencia artificial, incluyendo aplicaciones de automatización para redes sociales como Instagram y Facebook, y agentes de IA para WhatsApp.</p>
                         
                         <div class="contact-box">
-                            <p>Para consultas sobre privacidad: <a href="mailto:privacy@manakinlabs.com">privacy@manakinlabs.com</a></p>
+                            <p>Para consultas sobre privacidad: <a href="mailto:manakinlabs@gmail.com">manakinlabs@gmail.com</a></p>
                         </div>
                     </div>
 
                     <!-- Sección 2 -->
                     <div class="privacy-section" data-aos="fade-up" data-aos-delay="200">
                         <h2><i class="fas fa-database me-2"></i>2. Datos que Procesamos</h2>
-                        <p>A través de las APIs de Meta (Facebook/Instagram) procesamos los siguientes tipos de datos:</p>
+                        <p>A través de las APIs de Meta (Facebook/Instagram) y WhatsApp procesamos los siguientes tipos de datos:</p>
                         
                         <h3>Datos de Meta (Facebook/Instagram):</h3>
                         <ul>
@@ -213,6 +240,17 @@
                             <li><strong>Medios:</strong> IDs de posts, captions, URLs de imágenes y videos</li>
                             <li><strong>Métricas:</strong> Datos de engagement, reach y estadísticas</li>
                             <li><strong>Tokens de acceso:</strong> Para autenticación y autorización</li>
+                        </ul>
+
+                        <h3>Datos de WhatsApp (para Agentes de IA):</h3>
+                        <ul>
+                            <li><strong>Números de teléfono:</strong> Identificadores únicos de usuarios de WhatsApp</li>
+                            <li><strong>Nombres de perfil:</strong> Nombres asociados a las cuentas de WhatsApp</li>
+                            <li><strong>Mensajes:</strong> Contenido de mensajes de texto intercambiados con los agentes de IA</li>
+                            <li><strong>Multimedia:</strong> Imágenes, videos, documentos y audios compartidos a través de WhatsApp</li>
+                            <li><strong>Metadatos de conversación:</strong> Timestamps, estado de entrega y lectura de mensajes</li>
+                            <li><strong>Datos de perfil de negocio:</strong> Información del perfil comercial de WhatsApp Business asociado</li>
+                            <li><strong>Tokens de acceso API:</strong> Credenciales para la integración con WhatsApp Business API</li>
                         </ul>
 
                         <h3>Datos Operativos:</h3>
@@ -234,6 +272,16 @@
                     <div class="privacy-section" data-aos="fade-up" data-aos-delay="300">
                         <h2><i class="fas fa-bullseye me-2"></i>3. Fines del Procesamiento</h2>
                         
+                        <h3>Agentes de IA con WhatsApp:</h3>
+                        <ul>
+                            <li>Proporcionar asistencia automática e inteligente a través de WhatsApp</li>
+                            <li>Procesar y responder consultas de clientes de manera contextualizada</li>
+                            <li>Gestionar conversaciones de manera conversacional y natural</li>
+                            <li>Automatizar tareas y acciones basadas en las interacciones del usuario</li>
+                            <li>Mejorar la experiencia del cliente con respuestas rápidas y precisas</li>
+                            <li>Analizar conversaciones para optimizar el rendimiento de los agentes</li>
+                        </ul>
+
                         <h3>Automatización de Contenido:</h3>
                         <ul>
                             <li>Automatizar publicaciones y gestión de contenido</li>
@@ -289,11 +337,19 @@
                         <p>Para solicitar la eliminación de tus datos:</p>
                         <ul>
                             <li>Visita <strong>https://manakinlabs.com/data-deletion</strong> y completa la solicitud</li>
-                            <li>O escribe a <strong>privacy@manakinlabs.com</strong> con asunto "Data Deletion – IG/FB"</li>
+                            <li>O escribe a <strong>manakinlabs@gmail.com</strong> con asunto "Data Deletion – IG/FB"</li>
+                        </ul>
+
+                        <h3>Derecho de Eliminación (WhatsApp):</h3>
+                        <p>Para solicitar la eliminación de tus datos de WhatsApp procesados por nuestros agentes de IA:</p>
+                        <ul>
+                            <li>Visita <strong>https://manakinlabs.com/data-deletion</strong> y completa la solicitud especificando "WhatsApp"</li>
+                            <li>O escribe a <strong>manakinlabs@gmail.com</strong> con asunto "Data Deletion – WhatsApp"</li>
+                            <li>Incluye tu número de teléfono asociado a la cuenta de WhatsApp para procesar tu solicitud</li>
                         </ul>
                         
                         <div class="contact-box">
-                            <p><strong>Tiempo de Respuesta:</strong> Máximo 30 días hábiles</p>
+                            <p><strong>Tiempo de Respuesta:</strong> Máximo 30 días hábiles para todas las solicitudes de eliminación</p>
                         </div>
                     </div>
 
@@ -318,7 +374,7 @@
                             <div class="col-md-6">
                                 <div class="contact-box">
                                     <h3 style="font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-at me-2"></i>Correos</h3>
-                                    <p><strong>Privacidad:</strong> <a href="mailto:privacy@manakinlabs.com">privacy@manakinlabs.com</a></p>
+                                    <p><strong>Privacidad:</strong> <a href="mailto:manakinlabs@gmail.com">manakinlabs@gmail.com</a></p>
                                     <p><strong>General:</strong> <a href="mailto:dajosava@gmail.com">dajosava@gmail.com</a></p>
                                 </div>
                             </div>
@@ -343,8 +399,8 @@
 
                     <!-- Footer de Políticas -->
                     <div class="privacy-section text-center" data-aos="fade-up" data-aos-delay="800">
-                        <p class="text-muted mb-3">© 2025 Manakin Labs. Todos los derechos reservados.</p>
-                        <p class="text-muted">Estamos comprometidos con la protección de tu privacidad y el cumplimiento de las regulaciones de protección de datos.</p>
+                        <p style="color: var(--muted-text); margin-bottom: 1rem;">© 2025 Manakin Labs. Todos los derechos reservados.</p>
+                        <p style="color: var(--muted-text);">Estamos comprometidos con la protección de tu privacidad y el cumplimiento de las regulaciones de protección de datos.</p>
                     </div>
                 </div>
             </div>
@@ -359,25 +415,6 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="sha384-wziAfh6b/qT+3LrqebF9WeK4+J5sehS6FA10J1t3a866kJ/fvU5UwofWnQyzLtwu" crossorigin="anonymous"></script>
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-out-cubic',
-            once: true,
-            offset: 100
-        });
-        
-        // Smooth scroll para enlaces
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+    <script src="politicas-privacidad.js"></script>
 </body>
 </html>
